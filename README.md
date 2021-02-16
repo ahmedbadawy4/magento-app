@@ -4,7 +4,7 @@ This is a technical guide to provision an infrastructure to host Magento 2 appli
 ## 📝 Table of Contents:
 
 - [Prerequisites](#Prerequisites)
-- [Setup AWS credentials](#setup_AWS_credentials)
+- [Setup AWS credentials](#Setup_AWS_credentials)
 - [setup terraform](#setup_terraform)
 - [Step-5 Get Started]()
 
@@ -12,7 +12,7 @@ This is a technical guide to provision an infrastructure to host Magento 2 appli
 - AWS account [Signup/Login](https://console.aws.amazon.com/console/home?nc2=h_ct&src=header-signin)
 
 
-## setup_AWS_credentials (Linux/mac OS):
+## Setup_AWS_credentials (Linux/mac OS):
 
 1- Create a new user in the IAM Section on AWS [here](https://console.aws.amazon.com/iam/home?region=us-east-1#/users) and select "*Programmatic access*".
 
