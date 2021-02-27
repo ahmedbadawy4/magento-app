@@ -43,16 +43,6 @@ resource "aws_instance" "magento2_server" {
   key_name               = var.SSH_KEY_NAME
   subnet_id              = var.MAIN_SUBNET
   vpc_security_group_ids = [var.MAGENTO2_SG_ID]
-  provisioner "file" {
-    source      = "./../../scripts/magento2.conf"
-    destination = "/etc/apache2/sites-available/"
-    connection {
-      type        = "ssh"
-      user        = "ubuntu"
-      private_key = file("~/keys/Ahmed-key.pem")
-      host        = aws_instance.magento2_server.public_ip
-    }
-  }
   user_data = <<-EOF
               #!/bin/bash
               sudo apt update && apt upgrade -y
