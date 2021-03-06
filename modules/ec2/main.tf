@@ -43,7 +43,7 @@ resource "aws_instance" "magento2_server" {
   key_name               = var.SSH_KEY_NAME
   subnet_id              = var.MAIN_SUBNET
   vpc_security_group_ids = [var.MAGENTO2_SG_ID]
-  user_data = <<-EOF
+  user_data              = <<-EOF
               #!/bin/bash
               sudo apt update && apt upgrade -y
               sudo apt install apache2 -y

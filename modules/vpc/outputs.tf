@@ -8,3 +8,6 @@ output "magento2_sg_id" {
 }
 
 
+output "magento2_vpc_id" {
+  value = aws_vpc.magento2.id
+}
