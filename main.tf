@@ -22,7 +22,7 @@ module "ec2" {
 module "alb" {
   source              = "./modules/alb"
   depends_on          = [module.vpc, module.ec2]
-  allowed_cidr_blocks = "169.132.90.0/23"
+  allowed_cidr_blocks = "0.0.0.0/0"
   certificate_arn     = "arn:aws:iam::833915412828:server-certificate/abadawy"
   MAGENTO2_VPC_ID     = module.vpc.magento2_vpc_id
   VARNISH_SERVER_ID   = module.ec2.varnish_server_arn

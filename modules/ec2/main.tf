@@ -23,10 +23,12 @@ resource "aws_instance" "varnish_server" {
   user_data              = <<-EOF
               #!/bin/bash
               sudo apt update && apt upgrade -y
-              apt install varnish -y
+              apt install nginx varnish -y
               systemctl start varnish
               systemctl enable varnish
               systemctl status varnish
+              systemctl start nginx
+              systemctl enable nginx
               EOF
   root_block_device {
     volume_size           = var.VARNISH_VOLUME_SIZE

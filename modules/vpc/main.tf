@@ -55,7 +55,7 @@ resource "aws_security_group" "magento2" {
     from_port   = 22
     to_port     = 22
     protocol    = "TCP"
-    cidr_blocks = ["169.132.90.0/23"] ## to be changed in terraform.tfvars
+    cidr_blocks = ["0.0.0.0/0"] ## 169.132.90.0/23 to be changed in terraform.tfvars
   }
   egress {
     from_port   = 0
