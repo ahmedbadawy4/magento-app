@@ -19,6 +19,10 @@ variable "certificate_arn" {
   description = "ssh certificate arn"
 }
 
-variable "MAIN_SUBNET" {
-  description = "main subnet"
+variable "az_1_SUBNET" {
+  description = "AZ 1 subnet"
+}
+
+variable "az_2_SUBNET" {
+  description = "AZ 2 subnet"
 }

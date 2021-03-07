@@ -33,7 +33,7 @@ resource "aws_security_group" "alb" {
 resource "aws_alb" "magento2" {
   name            = "magento2"
   security_groups = [aws_security_group.alb.id]
-  subnets         = [var.MAIN_SUBNET]
+  subnets         = ["var.az_1_SUBNET", "var.az_2_SUBNET"]
   tags = {
     "Name" = "magento2_alb"
   }

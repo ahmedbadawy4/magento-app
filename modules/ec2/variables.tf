@@ -22,6 +22,6 @@ variable "MAGENTO2_SG_ID" {
   description = "main SG for all ec2"
 }
 
-variable "MAIN_SUBNET" {
-  description = "main subnet"
+variable "az_1_SUBNET" {
+  description = "az 1 subnet"
 }

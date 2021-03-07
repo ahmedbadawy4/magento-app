@@ -1,8 +1,10 @@
 module "vpc" {
-  source            = "./modules/vpc"
-  AVAIALBILITY_ZONE = ["us-east-2a", "us-east-2b", "us-east-2c"]
-  VPC_CIDR          = "10.0.0.0/16"
-  SUBNET_CIDR       = "10.0.1.0/24"
+  source       = "./modules/vpc"
+  az_1         = "us-east-2a"
+  az_2         = "us-east-2b"
+  VPC_CIDR     = "10.0.0.0/16"
+  SUBNET_CIDR1 = "10.0.1.0/24"
+  SUBNET_CIDR2 = "10.0.2.0/24"
 }
 
 module "ec2" {
@@ -14,7 +16,7 @@ module "ec2" {
   MAGENTO_VOLUME_SIZE   = "28"
   VARNISH_VOLUME_SIZE   = "28"
   MAGENTO2_SG_ID        = module.vpc.magento2_sg_id
-  MAIN_SUBNET           = module.vpc.main_subnet_id
+  az_1_SUBNET           = module.vpc.az_1_subnet_id
 }
 
 module "alb" {
@@ -25,5 +27,6 @@ module "alb" {
   MAGENTO2_VPC_ID     = module.vpc.magento2_vpc_id
   VARNISH_SERVER_ID   = module.ec2.varnish_server_arn
   MAGENTO2_SERVER_ID  = module.ec2.magento2_server_arn
-  MAIN_SUBNET         = module.vpc.main_subnet_id
+  az_1_SUBNET         = module.vpc.az_1_subnet_id
+  az_2_SUBNET         = module.vpc.az_2_subnet_id
 }

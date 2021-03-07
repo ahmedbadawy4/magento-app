@@ -18,7 +18,7 @@ resource "aws_instance" "varnish_server" {
   ami                    = data.aws_ami.ubuntu.id
   instance_type          = var.VARNISH_INSTANCE_TYPE
   key_name               = var.SSH_KEY_NAME
-  subnet_id              = var.MAIN_SUBNET
+  subnet_id              = var.az_1_SUBNET
   vpc_security_group_ids = [var.MAGENTO2_SG_ID]
   user_data              = <<-EOF
               #!/bin/bash
@@ -41,7 +41,7 @@ resource "aws_instance" "magento2_server" {
   ami                    = data.aws_ami.ubuntu.id
   instance_type          = var.MAGENTO_INSTANCE_TYPE
   key_name               = var.SSH_KEY_NAME
-  subnet_id              = var.MAIN_SUBNET
+  subnet_id              = var.az_1_SUBNET
   vpc_security_group_ids = [var.MAGENTO2_SG_ID]
   user_data              = <<-EOF
               #!/bin/bash

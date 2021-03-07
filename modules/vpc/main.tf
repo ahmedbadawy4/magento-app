@@ -17,18 +17,30 @@ resource "aws_route" "internet_access" {
   gateway_id             = aws_internet_gateway.igw.id
 }
 
+data "aws_availability_zones" "azs" {
+  state = "available"
+}
 
-resource "aws_subnet" "magento2" {
+resource "aws_subnet" "magento2_1" {
   vpc_id            = aws_vpc.magento2.id
-  cidr_block        = var.SUBNET_CIDR
-  availability_zone = var.AVAIALBILITY_ZONE
+  cidr_block        = var.SUBNET_CIDR1
+  availability_zone = var.az_1
   #associate_public_ip_address = "true"
   map_public_ip_on_launch = "true"
   tags = {
     Name = "abadawy-dev"
   }
 }
-
+resource "aws_subnet" "magento2_2" {
+  vpc_id            = aws_vpc.magento2.id
+  cidr_block        = var.SUBNET_CIDR2
+  availability_zone = var.az_2
+  #associate_public_ip_address = "true"
+  map_public_ip_on_launch = "true"
+  tags = {
+    Name = "abadawy-dev"
+  }
+}
 
 resource "aws_security_group" "magento2" {
   name   = "varnish_sg"
