@@ -33,7 +33,7 @@ resource "aws_security_group" "alb" {
 resource "aws_alb" "magento2" {
   name            = "magento2"
   security_groups = [aws_security_group.alb.id]
-  subnets         = ["var.az_1_SUBNET", "var.az_2_SUBNET"]
+  subnets         = [var.az_1_SUBNET, var.az_2_SUBNET]
   tags = {
     "Name" = "magento2_alb"
   }
@@ -89,7 +89,7 @@ resource "aws_alb_listener" "listener_http" {
   protocol          = "HTTP"
 
   default_action {
-    target_group_arn = "aws_lb_target_group.magento2.arn"
+    target_group_arn = aws_alb_target_group.magento2.arn
     type             = "forward"
   }
 }
@@ -101,7 +101,7 @@ resource "aws_alb_listener" "listener_https" {
   ssl_policy        = "ELBSecurityPolicy-2016-08"
   certificate_arn   = var.certificate_arn
   default_action {
-    target_group_arn = "aws_alb_target_group.varnish.arn"
+    target_group_arn = aws_alb_target_group.varnish.arn
     type             = "forward"
   }
 }
