@@ -79,7 +79,7 @@ resource "aws_alb_listener_rule" "varnish" {
   }
   condition {
     path_pattern {
-      values = ["/*"]
+      values = ["/"]
     }
   }
 }
