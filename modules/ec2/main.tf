@@ -45,16 +45,16 @@ resource "aws_instance" "magento2_server" {
   key_name               = var.SSH_KEY_NAME
   subnet_id              = var.az_1_SUBNET
   vpc_security_group_ids = [var.MAGENTO2_SG_ID]
-  user_data              = <<-EOF
-              #!/bin/bash
-              sudo apt update && apt upgrade -y
-              sudo apt install apache2 -y
-              sudo systemctl start apache2
-              sudo systemctl enable apache2
-              sudo a2ensite magento2.conf
-              sudo a2enmod rewrite
-              sudo systemctl daemon-reload
-              EOF
+ # user_data              = <<-EOF
+ #             #!/bin/bash
+ #             sudo apt update && apt upgrade -y
+ #             sudo apt install apache2 -y
+ #             sudo systemctl start apache2
+ #             sudo systemctl enable apache2
+ #             sudo a2ensite magento2.conf
+ #             sudo a2enmod rewrite
+ #             sudo systemctl daemon-reload
+ #             EOF
   root_block_device {
     volume_size           = var.MAGENTO_VOLUME_SIZE
     delete_on_termination = "true"
